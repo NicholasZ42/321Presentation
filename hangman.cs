@@ -10,6 +10,7 @@ class Program
     }
 }
 
+// Could split Program and HangmanGame into multiple files.
 class HangmanGame
 {
     private string[] words = { "programming", "hangman", "computer", "developer", "code" };
@@ -18,6 +19,7 @@ class HangmanGame
     private int attemptsLeft;
     private string incorrectLetters;
 
+    // Could split into multiple methods
     public void StartGame()
     {
         Random random = new Random();
@@ -62,11 +64,12 @@ class HangmanGame
     {
         Console.Clear();
         Console.WriteLine("Hangman Game");
-        Console.WriteLine("Word: " + new string(guessedWord)); // * 
+        Console.WriteLine("Word: " + new string(guessedWord)); // * Don't need to make a new string
         Console.WriteLine("Attempts Left: " + attemptsLeft);
         Console.WriteLine("Incorrect Letters: " + incorrectLetters);
     }
 
+    // Might not work for words with multiple instances of the same character
     private void UpdateGuessedWord(char letter)
     {
         for (int i = 0; i < selectedWord.Length; i++)

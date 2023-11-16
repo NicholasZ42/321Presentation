@@ -3,6 +3,7 @@
 
 using System;
 
+// Calculator, CalculatorLogic, CalculatorUtility should be one class to increase cohesion.
 class Calculator
 {
     static void Main()
@@ -12,18 +13,18 @@ class Calculator
         try
         {
             Console.Write("Enter the first number: ");
-            int num1 = Console.ReadLine(); //
+            int num1 = Console.ReadLine(); // Won't compile
 
             Console.Write("Enter the second number: ");
             int num2 = Console.ReadLine(); //
 
             Console.WriteLine("Select operation (+, -, *, /): ");
-            char operation = Console.ReadLine()[0]; //
+            char operation = Console.ReadLine()[0]; // Won't compile
 
             CalculatorLogic calculatorLogic = new CalculatorLogic();
-            // 
+            // No constructor for calculatorLogic
 
-            int result = calculatorLogic.PerformCalculation(num1, num2); // 
+            int result = calculatorLogic.PerformCalculation(num1, num2); // perform calculation is non-static, won't compile
 
             Console.WriteLine($"Result: {result}");
         }
@@ -36,6 +37,7 @@ class Calculator
 
 class CalculatorLogic
 {
+    // Could make use of polymorphism
     public int PerformCalculation(int num1, int num2, char operation)
     {
         int result = 0;
@@ -60,7 +62,7 @@ class CalculatorLogic
                 else
                 {
                     Console.WriteLine("Error: Division by zero");
-                    //
+                    // Could throw exceptions instead
                 }
                 break;
             default:
